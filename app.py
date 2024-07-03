@@ -4,7 +4,7 @@ import requests
 
 # Function to fetch movie poster from TMDB API
 def fetch_poster(movie_id):
-    url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(movie_id)
+    url = "https://api.themoviedb.org/3/movie/{}?api_key=YOUR_TMDB_API_KEY&language=en-US".format(movie_id)
     data = requests.get(url)
     data = data.json()
     poster_path = data['poster_path']
@@ -28,11 +28,11 @@ def recommend(movie, movies, similarity):
 # Load movie list from pickle file
 @st.cache(allow_output_mutation=True)
 def load_movies():
-    url = 'https://drive.google.com/file/d/1lnzEeYuvweJ_O4EkYI_cEVML4aeMhlVP/view?usp=sharing'
+    url = 'https://drive.google.com/file/d/1lnzEeYuvweJ_O4EkYI_cEVML4aeMhlVP/view?usp=drive_link'
     response = requests.get(url)
     return pickle.loads(response.content)
 
-# Load similarity matrix from pickle file
+# Load similarity matrix from pickle file in Google Drive
 @st.cache(allow_output_mutation=True)
 def load_similarity():
     url = 'https://drive.google.com/file/d/1Bw-lYMFe8Lf1r-4EEye7_Ik91IJWRrCX/view?usp=drive_link'
